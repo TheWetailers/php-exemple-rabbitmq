@@ -32,6 +32,8 @@ try {
     $channel->basic_consume($_POST['queue_name'], '', false, false, false, false, function(AMQPMessage $message) use (&$response) {
         foreach ($_POST['ignore'] as $word) {
             if (false !== strpos($message->body, $word)) {
+                // On retire le message de la queue
+                $message->delivery_info['channel']->basic_nack($message->delivery_info['delivery_tag']);
                 throw new Exception();
             }
         }
