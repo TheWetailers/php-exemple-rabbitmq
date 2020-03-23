@@ -1,2 +1,2 @@
 # php-exemple-rabbitmq
-Exemple de code PHP utilisant RabbitMQ
+Exemple de codes PHP utilisant RabbitMQ

@@ -1,0 +1,16 @@
+version: '3.0'
+
+services:
+  web:
+    container_name: web
+    image: php:7.4-apache
+    links:
+      - rabbitmq
+    volumes:
+      - ./source:/var/www/html
+    ports:
+      - "443:443"
+      - "80:80"
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3
